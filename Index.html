@@ -7,1074 +7,1454 @@
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html,body{
-  min-height:100%;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  color:#fff;
-  background:
-    radial-gradient(circle at 10% 5%,rgba(255,0,100,.22),transparent 28%),
-    radial-gradient(circle at 95% 25%,rgba(255,0,90,.18),transparent 30%),
-    radial-gradient(circle at 50% 100%,rgba(255,0,90,.22),transparent 38%),
-    #080308;
-  overflow-x:hidden;
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#fff;
+    background:
+        radial-gradient(circle at 15% 0%,rgba(255,0,105,.22),transparent 32%),
+        radial-gradient(circle at 100% 100%,rgba(255,0,105,.16),transparent 35%),
+        linear-gradient(135deg,#080307,#17050e,#080307);
+    overflow-x:hidden;
 }
 
 body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
-  background-size:45px 45px;
+    content:"";
+    position:fixed;
+    width:350px;
+    height:350px;
+    left:-180px;
+    top:100px;
+    border-radius:50%;
+    background:#ff0871;
+    filter:blur(150px);
+    opacity:.12;
+    pointer-events:none;
 }
 
-.container{
-  width:min(680px,92%);
-  margin:auto;
-  padding:35px 0 45px;
-  position:relative;
-  z-index:2;
+body:after{
+    content:"";
+    position:fixed;
+    width:350px;
+    height:350px;
+    right:-180px;
+    bottom:-100px;
+    border-radius:50%;
+    background:#ff0871;
+    filter:blur(150px);
+    opacity:.12;
+    pointer-events:none;
 }
 
-/* ================= LOGO ================= */
+.page{
+    width:min(680px,94%);
+    margin:auto;
+    padding:42px 0 40px;
+}
+
+/* LOGO */
+
+.logo-area{
+    text-align:center;
+    margin-bottom:55px;
+}
 
 .logo{
-  text-align:center;
-  margin-bottom:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
 }
 
-.logo-icon{
-  font-size:38px;
-  color:#ff0b68;
-  line-height:1;
-  margin-bottom:8px;
-  text-shadow:
-    0 0 12px rgba(255,0,100,.9),
-    0 0 35px rgba(255,0,100,.5);
+.heart{
+    color:#ff0871;
+    font-size:35px;
+    filter:drop-shadow(0 0 13px rgba(255,0,110,.5));
 }
 
 .logo-name{
-  font-size:31px;
-  font-weight:900;
-  letter-spacing:-1px;
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:-1.5px;
 }
 
 .logo-name span{
-  color:#ff176d;
+    color:#ff0871;
 }
 
 .logo-sub{
-  color:#9d315a;
-  font-size:10px;
-  letter-spacing:5px;
-  margin-top:7px;
+    margin-top:7px;
+    color:#a51a50;
+    font-size:9px;
+    font-weight:bold;
+    letter-spacing:5px;
 }
 
-/* ================= HERO ================= */
+/* GERAL */
 
-.badge{
-  text-align:center;
-  color:#ff2473;
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:4px;
-  margin-bottom:24px;
+.private,
+.process-label,
+.unlock-label,
+.report-label{
+    text-align:center;
+    color:#ff3b8b;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:22px;
+}
+
+h1,
+.process-title,
+.unlock-title,
+.report-title{
+    text-align:center;
+    font-weight:900;
+    letter-spacing:-2.5px;
+    line-height:1.05;
 }
 
 h1{
-  text-align:center;
-  font-size:clamp(39px,8vw,59px);
-  line-height:.98;
-  letter-spacing:-2.5px;
-  margin-bottom:24px;
+    font-size:clamp(38px,8vw,58px);
 }
 
-h1 span{
-  color:#ff176d;
+h1 span,
+.process-title span,
+.unlock-title span{
+    display:block;
+    color:#ff0871;
 }
 
-.description{
-  color:#b9b1b7;
-  text-align:center;
-  font-size:17px;
-  line-height:1.55;
-  margin-bottom:37px;
+.description,
+.process-description,
+.unlock-description{
+    max-width:610px;
+    margin:24px auto 34px;
+    text-align:center;
+    color:#aaa3a7;
+    font-size:17px;
+    line-height:1.55;
 }
 
-/* ================= CARD ================= */
+/* FORM */
 
-.card{
-  background:rgba(12,7,12,.76);
-  border:1px solid rgba(255,20,105,.35);
-  border-radius:27px;
-  padding:30px;
-  box-shadow:
-    0 0 50px rgba(255,0,90,.07),
-    inset 0 0 40px rgba(255,0,90,.025);
-  backdrop-filter:blur(10px);
+.form-card,
+.status-card,
+.unlock-card,
+.report-card{
+    border:1px solid rgba(255,0,110,.34);
+    background:rgba(11,5,9,.74);
+    box-shadow:
+        0 0 50px rgba(255,0,100,.06),
+        inset 0 0 35px rgba(255,0,100,.025);
 }
 
-label{
-  display:block;
-  color:#ddd5da;
-  font-size:15px;
-  font-weight:700;
-  margin-bottom:11px;
+.form-card{
+    padding:31px;
+    border-radius:29px;
+}
+
+.question{
+    color:#ddd;
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:13px;
 }
 
 .gender{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  margin-bottom:25px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+    margin-bottom:27px;
 }
 
 .gender button{
-  height:68px;
-  border-radius:18px;
-  border:1px solid #35232d;
-  background:#0e090e;
-  color:#fff;
-  font-size:17px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.25s;
+    height:67px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.13);
+    background:#10090e;
+    color:#fff;
+    font-size:19px;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.gender button.active{
-  border-color:#ff176d;
-  background:linear-gradient(
-    135deg,
-    rgba(255,0,100,.18),
-    rgba(255,0,100,.04)
-  );
-  box-shadow:
-    0 0 22px rgba(255,0,100,.16),
-    inset 0 0 20px rgba(255,0,100,.04);
+.gender button.active,
+.gender button:hover{
+    border-color:#ff0871;
+    background:rgba(255,0,100,.08);
+    box-shadow:0 0 22px rgba(255,0,100,.14);
 }
 
 .field{
-  margin-bottom:21px;
+    margin-bottom:21px;
 }
 
-.row{
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:14px;
+.label{
+    display:block;
+    color:#ddd;
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:11px;
 }
 
 input{
-  width:100%;
-  height:66px;
-  border-radius:17px;
-  border:1px solid #36262f;
-  outline:none;
-  background:#0e090e;
-  color:#fff;
-  padding:0 20px;
-  font-size:16px;
-}
-
-input::placeholder{
-  color:#716a70;
+    width:100%;
+    height:68px;
+    padding:0 20px;
+    border-radius:17px;
+    border:1px solid rgba(255,255,255,.13);
+    background:#10090e;
+    color:#fff;
+    font-size:17px;
+    outline:none;
 }
 
 input:focus{
-  border-color:#ff176d;
-  box-shadow:0 0 18px rgba(255,0,100,.12);
+    border-color:#ff0871;
+    box-shadow:0 0 18px rgba(255,0,100,.1);
 }
 
-.search-btn{
-  width:100%;
-  height:70px;
-  border:0;
-  border-radius:18px;
-  background:linear-gradient(90deg,#ff0861,#ff2878);
-  color:white;
-  font-size:20px;
-  font-weight:800;
-  cursor:pointer;
-  box-shadow:0 10px 35px rgba(255,0,100,.25);
-  transition:.2s;
+input::placeholder{
+    color:#6d666b;
 }
 
-.search-btn:active{
-  transform:scale(.98);
+.small-fields{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:14px;
 }
 
-.security{
-  text-align:center;
-  color:#80757c;
-  font-size:13px;
-  margin-top:18px;
+.search-button,
+.payment-button{
+    width:100%;
+    height:70px;
+    border:0;
+    border-radius:18px;
+    background:linear-gradient(90deg,#ff0068,#ff277f);
+    color:#fff;
+    font-size:20px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 14px 35px rgba(255,0,100,.23);
+    transition:.2s;
 }
 
-.footer{
-  text-align:center;
-  margin-top:30px;
-  color:#625960;
-  font-size:12px;
+.search-button:hover,
+.payment-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 45px rgba(255,0,100,.32);
 }
 
-.footer span{
-  margin:0 6px;
+.privacy{
+    text-align:center;
+    margin-top:17px;
+    color:#8e858b;
+    font-size:13px;
 }
 
-/* ================= PROCESSAMENTO ================= */
-
-#processing{
-  display:none;
+.features{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:18px;
+    margin-top:25px;
+    color:#777077;
+    font-size:12px;
 }
+
+.features span:before{
+    content:"•";
+    margin-right:7px;
+    color:#ff0871;
+}
+
+.copyright{
+    text-align:center;
+    margin-top:40px;
+    color:#625b60;
+    font-size:12px;
+}
+
+/* TELAS */
+
+#processing,
+#unlock,
+#report{
+    display:none;
+}
+
+/* PROCESSAMENTO */
 
 .process-title{
-  text-align:center;
-  color:#ff2674;
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:4px;
-  margin-bottom:24px;
+    font-size:clamp(37px,8vw,55px);
 }
 
-.process-heading{
-  text-align:center;
-  font-size:48px;
-  line-height:1;
-  letter-spacing:-2px;
-  margin-bottom:22px;
+.scanner{
+    position:relative;
+    width:390px;
+    max-width:100%;
+    height:390px;
+    margin:32px auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.process-heading span{
-  color:#ff176d;
+.circle{
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(255,0,110,.55);
+    animation:pulse 3s ease-in-out infinite;
 }
 
-.process-text{
-  text-align:center;
-  color:#aaa1a8;
-  font-size:16px;
-  line-height:1.5;
-  margin-bottom:18px;
+.circle.one{
+    width:380px;
+    height:380px;
 }
 
-/* ================= SCANNER ================= */
-
-.profile-scanner{
-  width:100%;
-  max-width:560px;
-  height:390px;
-  margin:0 auto 25px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+.circle.two{
+    width:310px;
+    height:310px;
+    animation-delay:.3s;
 }
 
-/* círculos */
-
-.scan-ring{
-  position:absolute;
-  border:1px solid rgba(255,20,105,.62);
-  border-radius:50%;
-  pointer-events:none;
+.circle.three{
+    width:235px;
+    height:235px;
+    animation-delay:.6s;
 }
 
-.ring-one{
-  width:205px;
-  height:205px;
-  animation:ringPulse 2.5s infinite ease-in-out;
+@keyframes pulse{
+    0%,100%{
+        transform:scale(.96);
+        opacity:.4;
+    }
+    50%{
+        transform:scale(1.03);
+        opacity:1;
+    }
 }
 
-.ring-two{
-  width:275px;
-  height:275px;
-  animation:ringPulse 3s infinite ease-in-out .2s;
+/* FOTOS FICTÍCIAS */
+
+.ai-photo{
+    position:absolute;
+    z-index:4;
+    width:92px;
+    height:125px;
+    border-radius:18px;
+    overflow:hidden;
+    opacity:.76;
+    filter:blur(9px);
+    border:1px solid rgba(255,0,110,.3);
+
+    background:
+        radial-gradient(circle at 50% 27%,#e9a7bc 0 17%,transparent 18%),
+        radial-gradient(ellipse at 50% 75%,#c72c70 0 33%,transparent 34%),
+        linear-gradient(145deg,#32101f,#9e2459,#160812);
+
+    box-shadow:0 0 28px rgba(255,0,110,.22);
+
+    animation:photoFloat 3s ease-in-out infinite;
 }
 
-.ring-three{
-  width:350px;
-  height:350px;
-  animation:ringRotate 8s linear infinite;
-  border-color:rgba(255,20,105,.42);
+.ai-photo:before{
+    content:"";
+    position:absolute;
+    width:44px;
+    height:49px;
+    left:24px;
+    top:15px;
+    border-radius:50%;
+    background:linear-gradient(145deg,#f3b4c7,#c77b96);
+    filter:blur(5px);
 }
 
-.ring-three:before{
-  content:"";
-  position:absolute;
-  width:65px;
-  height:3px;
-  top:14px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#ff176d;
-  box-shadow:
-    0 0 8px #fff,
-    0 0 20px #ff176d,
-    0 0 35px #ff176d;
-  border-radius:10px;
+.ai-photo:after{
+    content:"";
+    position:absolute;
+    width:75px;
+    height:75px;
+    left:8px;
+    bottom:-10px;
+    border-radius:45px 45px 15px 15px;
+    background:linear-gradient(135deg,#ff2a83,#6d1641);
+    filter:blur(8px);
 }
 
-/* ================= PERFIS ================= */
-
-.profile-track{
-  position:absolute;
-  width:100%;
-  height:220px;
-  top:84px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 8px;
-  z-index:3;
+.photo1{
+    left:5px;
+    top:115px;
 }
 
-.mini-profile{
-  width:78px;
-  height:120px;
-  border-radius:15px;
-  overflow:hidden;
-  position:relative;
-  border:1px solid rgba(255,80,145,.3);
-  filter:blur(7px);
-  opacity:.62;
-  background:#24101b;
-  box-shadow:0 0 25px rgba(255,0,100,.12);
+.photo2{
+    right:5px;
+    top:115px;
+    animation-delay:.7s;
 }
 
-.p1{
-  animation:float1 3s infinite ease-in-out;
+.photo3{
+    left:52px;
+    bottom:18px;
+    animation-delay:1.3s;
 }
 
-.p2{
-  margin-top:50px;
-  animation:float2 3.6s infinite ease-in-out;
+@keyframes photoFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-4deg);
+        opacity:.52;
+    }
+    50%{
+        transform:translateY(-12px) rotate(2deg);
+        opacity:.85;
+    }
 }
 
-.p3{
-  margin-top:-30px;
-  animation:float1 3.2s infinite ease-in-out .3s;
+/* BOLINHAS */
+
+.scanner-orbit{
+    position:absolute;
+    z-index:10;
+    width:365px;
+    height:365px;
+    border-radius:50%;
+    animation:orbit 2.8s linear infinite;
 }
 
-.p4{
-  margin-top:45px;
-  animation:float2 3.8s infinite ease-in-out .4s;
+.scanner-orbit:before{
+    content:"";
+    position:absolute;
+    width:13px;
+    height:13px;
+    left:50%;
+    top:-6px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:#fff;
+
+    box-shadow:
+        0 0 7px #fff,
+        0 0 18px #ff0871,
+        0 0 35px #ff0871,
+        0 0 55px rgba(255,0,110,.8);
 }
 
-.p5{
-  animation:float1 3.4s infinite ease-in-out .6s;
+@keyframes orbit{
+    to{
+        transform:rotate(360deg);
+    }
 }
 
-/* ================= FOTOS ESTILO IA ================= */
-
-/*
-  As imagens abaixo são retratos estilizados em CSS.
-  O blur forte cria o efeito de "perfil não revelado".
-*/
-
-.fake-person{
-  width:100%;
-  height:100%;
-  position:relative;
-  overflow:hidden;
-
-  background:
-    radial-gradient(
-      ellipse at 50% 29%,
-      #c89183 0 12%,
-      transparent 13%
-    ),
-    radial-gradient(
-      ellipse at 50% 38%,
-      #4d2b2b 0 20%,
-      transparent 21%
-    ),
-    radial-gradient(
-      ellipse at 50% 73%,
-      #29212b 0 32%,
-      transparent 33%
-    ),
-    linear-gradient(
-      145deg,
-      #492236,
-      #120910
-    );
+.scanner-orbit-small{
+    position:absolute;
+    z-index:9;
+    width:285px;
+    height:285px;
+    border-radius:50%;
+    animation:orbitReverse 2s linear infinite;
 }
 
-/* cabelo */
-
-.fake-person:before{
-  content:"";
-  position:absolute;
-  width:62%;
-  height:48%;
-  left:19%;
-  top:15%;
-  border-radius:52% 52% 43% 43%;
-  background:
-    radial-gradient(
-      ellipse at 50% 75%,
-      #40232c 0 50%,
-      #160b11 52%
-    );
+.scanner-orbit-small:before{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    right:-4px;
+    top:50%;
+    border-radius:50%;
+    background:#ff72aa;
+    box-shadow:0 0 10px #ff0871,0 0 25px #ff0871;
 }
 
-/* roupa/corpo */
-
-.fake-person:after{
-  content:"";
-  position:absolute;
-  width:78%;
-  height:50%;
-  left:11%;
-  bottom:-7%;
-  border-radius:50% 50% 0 0;
-  background:
-    linear-gradient(
-      135deg,
-      #3b1429,
-      #0c080d
-    );
+@keyframes orbitReverse{
+    to{
+        transform:rotate(-360deg);
+    }
 }
 
-/* homens */
-
-.man{
-  background:
-    radial-gradient(
-      ellipse at 50% 30%,
-      #b98372 0 12%,
-      transparent 13%
-    ),
-    radial-gradient(
-      ellipse at 50% 38%,
-      #3a2925 0 20%,
-      transparent 21%
-    ),
-    linear-gradient(
-      145deg,
-      #332535,
-      #0e080e
-    );
+.photo-glow{
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:#ff0871;
+    filter:blur(80px);
+    opacity:.15;
+    animation:glow 2.5s infinite;
 }
 
-.man2{
-  filter:hue-rotate(20deg);
+@keyframes glow{
+    50%{
+        transform:scale(1.2);
+        opacity:.23;
+    }
 }
 
-.woman2{
-  filter:hue-rotate(-12deg);
+/* CENTRO */
+
+.center-card{
+    position:relative;
+    z-index:5;
+    width:145px;
+    height:200px;
+    border:3px solid #ff9bc0;
+    border-radius:28px;
+    background:rgba(20,7,14,.75);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    box-shadow:
+        0 0 30px rgba(255,0,110,.17),
+        inset 0 0 30px rgba(255,0,110,.05);
 }
 
-.woman3{
-  filter:hue-rotate(-20deg);
+.blur-person{
+    position:absolute;
+    width:100px;
+    height:155px;
+    filter:blur(19px);
+    background:
+        radial-gradient(circle at 50% 23%,#ffb0c8 0 17%,transparent 18%),
+        radial-gradient(ellipse at 50% 75%,#ff277f 0 37%,transparent 38%);
 }
 
-/* ================= PERFIL CENTRAL ================= */
-
-.main-profile{
-  width:155px;
-  height:205px;
-  position:relative;
-  z-index:10;
-  border-radius:24px;
-  padding:3px;
-  background:linear-gradient(
-    135deg,
-    #ffbad3,
-    #ff176d,
-    #ff7cac
-  );
-
-  box-shadow:
-    0 0 20px rgba(255,0,100,.65),
-    0 0 55px rgba(255,0,100,.35);
-
-  animation:mainFloat 3s infinite ease-in-out;
+.question-mark{
+    position:relative;
+    z-index:3;
+    font-size:68px;
+    font-weight:900;
+    color:#ff8eb8;
+    text-shadow:0 0 20px rgba(255,0,110,.4);
 }
 
-.profile-photo{
-  width:100%;
-  height:100%;
-  border-radius:21px;
-  overflow:hidden;
-  background:#1a0a13;
-  position:relative;
+/* STATUS */
+
+.status-card{
+    padding:18px 22px;
+    border-radius:25px;
 }
 
-.main-woman{
-  filter:blur(8px);
-  transform:scale(1.1);
+.status-row{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.profile-glow{
-  position:absolute;
-  inset:-25px;
-  border-radius:35px;
-  pointer-events:none;
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,20,105,.18),
-      transparent 65%
-    );
-
-  animation:photoGlow 2s infinite alternate;
-}
-
-/* ================= SCANNER DOT ================= */
-
-.scanner-dot{
-  position:absolute;
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:#fff;
-  z-index:20;
-  top:50%;
-  left:50%;
-  box-shadow:
-    0 0 8px #fff,
-    0 0 18px #ff176d,
-    0 0 35px #ff176d;
-
-  animation:scannerOrbit 4s linear infinite;
-}
-
-/* ================= STATUS ================= */
-
-.status{
-  border:1px solid rgba(255,20,105,.35);
-  border-radius:24px;
-  background:rgba(8,5,8,.65);
-  padding:5px 22px;
-}
-
-.status-item{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  padding:19px 0;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.status-item:last-child{
-  border-bottom:0;
+.status-row:last-child{
+    border-bottom:0;
 }
 
 .check{
-  width:45px;
-  height:45px;
-  min-width:45px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#ff176d;
-  font-size:22px;
-  font-weight:900;
-  box-shadow:0 0 18px rgba(255,0,100,.2);
+    width:46px;
+    height:46px;
+    flex:none;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#ff0871;
+    font-size:24px;
 }
 
-.loader{
-  width:45px;
-  height:45px;
-  min-width:45px;
-  border-radius:50%;
-  border:6px solid rgba(255,20,105,.2);
-  border-top-color:#ff176d;
-  animation:spin .8s linear infinite;
-}
-
-.status-title{
-  font-size:16px;
-  font-weight:800;
-}
-
-.status-sub{
-  color:#80777d;
-  font-size:13px;
-  margin-top:5px;
-}
-
-.dots{
-  margin-left:auto;
-  color:#ff176d;
-  letter-spacing:3px;
-  animation:dots 1s infinite;
-}
-
-.private{
-  width:max-content;
-  max-width:100%;
-  margin:25px auto 0;
-  border:1px solid rgba(255,20,105,.25);
-  background:rgba(255,0,90,.04);
-  padding:12px 22px;
-  border-radius:30px;
-  color:#91878e;
-  font-size:13px;
-}
-
-/* ================= ANIMAÇÕES ================= */
-
-@keyframes ringRotate{
-  from{
-    transform:rotate(0deg);
-  }
-  to{
-    transform:rotate(360deg);
-  }
-}
-
-@keyframes ringPulse{
-  0%,100%{
-    transform:scale(.96);
-    opacity:.45;
-  }
-
-  50%{
-    transform:scale(1.04);
-    opacity:1;
-  }
-}
-
-@keyframes mainFloat{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-9px);
-  }
-}
-
-@keyframes photoGlow{
-  from{
-    opacity:.3;
-    transform:scale(.94);
-  }
-
-  to{
-    opacity:1;
-    transform:scale(1.06);
-  }
-}
-
-@keyframes float1{
-  0%,100%{
-    transform:translateY(0) scale(.85);
-  }
-
-  50%{
-    transform:translateY(-15px) scale(.91);
-  }
-}
-
-@keyframes float2{
-  0%,100%{
-    transform:translateY(0) scale(.85);
-  }
-
-  50%{
-    transform:translateY(13px) scale(.91);
-  }
-}
-
-@keyframes scannerOrbit{
-  from{
-    transform:rotate(0deg) translateX(138px) rotate(0deg);
-  }
-
-  to{
-    transform:rotate(360deg) translateX(138px) rotate(-360deg);
-  }
+.loading-circle{
+    width:46px;
+    height:46px;
+    flex:none;
+    border-radius:50%;
+    border:6px solid #48112b;
+    border-top-color:#ff0871;
+    border-right-color:#ff0871;
+    animation:spin 1s linear infinite;
 }
 
 @keyframes spin{
-  to{
-    transform:rotate(360deg);
-  }
+    to{transform:rotate(360deg);}
+}
+
+.status-text strong{
+    display:block;
+    font-size:15px;
+    margin-bottom:4px;
+}
+
+.status-text small{
+    color:#80777c;
+    font-size:12px;
+}
+
+.dots{
+    margin-left:auto;
+    color:#ff0871;
+    animation:dots 1s infinite;
 }
 
 @keyframes dots{
-  0%,100%{
-    opacity:.3;
-  }
-
-  50%{
-    opacity:1;
-  }
+    50%{opacity:.2;}
 }
 
-/* ================= CELULAR ================= */
+/* PAGAMENTO */
 
-@media(max-width:520px){
+.unlock-title{
+    font-size:clamp(36px,8vw,53px);
+}
 
-  .container{
-    width:92%;
-    padding-top:28px;
-  }
+.unlock-card{
+    padding:32px;
+    border-radius:29px;
+    text-align:center;
+}
 
-  .logo-name{
-    font-size:28px;
-  }
+.lock-icon{
+    width:74px;
+    height:74px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    background:rgba(255,0,110,.09);
+    border:1px solid rgba(255,0,110,.35);
+    box-shadow:0 0 30px rgba(255,0,110,.12);
+}
 
-  h1{
-    font-size:42px;
-  }
+.unlock-card h3{
+    font-size:22px;
+    margin-bottom:9px;
+}
 
-  .description{
-    font-size:15px;
-  }
+.unlock-card p{
+    color:#8e858b;
+    font-size:13px;
+    line-height:1.5;
+}
 
-  .card{
-    padding:23px 18px;
-  }
+.price{
+    margin:23px 0;
+}
 
-  .row{
-    grid-template-columns:1fr;
-  }
+.price small{
+    display:block;
+    color:#81777c;
+    margin-bottom:5px;
+}
 
-  .profile-scanner{
-    height:350px;
-  }
+.price strong{
+    display:block;
+    font-size:45px;
+}
 
-  .ring-one{
-    width:185px;
-    height:185px;
-  }
+.price strong span{
+    color:#ff0871;
+}
 
-  .ring-two{
-    width:250px;
-    height:250px;
-  }
+.payment-button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+}
 
-  .ring-three{
-    width:315px;
-    height:315px;
-  }
+.payment-note{
+    margin-top:14px;
+    color:#70686d;
+    font-size:11px;
+    line-height:1.5;
+}
 
-  .main-profile{
-    width:135px;
-    height:180px;
-  }
+.secure-line{
+    margin-top:22px;
+    padding-top:19px;
+    border-top:1px solid rgba(255,255,255,.07);
+    color:#777077;
+    font-size:12px;
+}
 
-  .mini-profile{
-    width:61px;
-    height:102px;
-  }
+/* RELATÓRIO */
 
-  .profile-track{
-    padding:0 2px;
-  }
+.report-title{
+    font-size:clamp(34px,8vw,51px);
+}
 
-  .process-heading{
-    font-size:40px;
-  }
+.report-card{
+    padding:25px;
+    border-radius:27px;
+}
+
+.report-section{
+    margin-bottom:28px;
+}
+
+.report-section:last-child{
+    margin-bottom:0;
+}
+
+.report-heading{
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.app-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding:15px 0;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.app-row:last-child{
+    border-bottom:0;
+}
+
+.app-name{
+    font-weight:700;
+}
+
+.app-result{
+    color:#a9a1a5;
+    font-size:12px;
+    text-align:right;
+}
+
+.not-found{
+    color:#ff8bb5;
+}
+
+/* GRÁFICOS */
+
+.graph{
+    margin-bottom:21px;
+}
+
+.graph:last-child{
+    margin-bottom:0;
+}
+
+.graph-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+    font-size:13px;
+}
+
+.graph-value{
+    color:#ff4c91;
+    font-weight:900;
+}
+
+.bar{
+    width:100%;
+    height:13px;
+    border-radius:20px;
+    background:#29101c;
+    overflow:hidden;
+}
+
+.bar-fill{
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#ff0068,#ff5a9d);
+    box-shadow:0 0 15px rgba(255,0,110,.25);
+    transform-origin:left;
+    animation:barIn 1.3s ease-out;
+}
+
+@keyframes barIn{
+    from{width:0!important;}
+}
+
+/* CONCLUSÃO */
+
+.conclusion{
+    padding:20px;
+    border-radius:18px;
+    border:1px solid rgba(255,0,110,.2);
+    background:rgba(255,0,100,.035);
+    color:#b8afb4;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.disclaimer{
+    margin-top:18px;
+    color:#70686d;
+    font-size:11px;
+    line-height:1.55;
+}
+
+.report-footer{
+    text-align:center;
+    margin-top:22px;
+    color:#665e63;
+    font-size:11px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .page{
+        width:92%;
+    }
+
+    .logo-name{
+        font-size:28px;
+    }
+
+    .form-card,
+    .unlock-card,
+    .report-card{
+        padding:25px 20px;
+    }
+
+    .scanner{
+        height:350px;
+        transform:scale(.92);
+        margin-top:15px;
+        margin-bottom:5px;
+    }
+
+    .status-card{
+        padding:13px 17px;
+    }
+
+    .status-row{
+        gap:11px;
+    }
+
+    .small-fields{
+        gap:9px;
+    }
+
+    .app-row{
+        align-items:flex-start;
+    }
+}
+
+@media(max-width:390px){
+
+    .scanner{
+        transform:scale(.82);
+    }
+
+    .gender button{
+        font-size:16px;
+    }
+
+    .form-card{
+        padding:22px 17px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
 
-<!-- ================= TELA INICIAL ================= -->
+<!-- LOGO -->
 
-<section id="home">
+<div class="logo-area">
 
-  <div class="logo">
-    <div class="logo-icon">♥</div>
+    <div class="logo">
+        <div class="heart">♥</div>
 
-    <div class="logo-name">
-      SECRETO<span>.YOU</span>
+        <div class="logo-name">
+            SECRETO<span>.YOU</span>
+        </div>
     </div>
 
     <div class="logo-sub">
-      ENCONTRE O QUE ELA ESCONDE
-    </div>
-  </div>
-
-  <div class="badge">
-    CONSULTA PRIVADA
-  </div>
-
-  <h1>
-    Descubra informações<br>
-    <span>disponíveis<br>publicamente.</span>
-  </h1>
-
-  <p class="description">
-    Preencha os dados abaixo para iniciar uma consulta.
-    O resultado deve ser interpretado como uma pesquisa
-    informativa, sem garantia de identificação.
-  </p>
-
-  <div class="card">
-
-    <label>Quem você está pesquisando?</label>
-
-    <div class="gender">
-
-      <button
-        id="woman"
-        class="active"
-        type="button">
-        ♀ Mulher
-      </button>
-
-      <button
-        id="man"
-        type="button">
-        ♂ Homem
-      </button>
-
+        ENCONTRE O QUE ELA ESCONDE
     </div>
 
-    <div class="field">
+</div>
 
-      <label>Primeiro nome</label>
 
-      <input
-        id="name"
-        type="text"
-        placeholder="Ex.: Mariana"
-        autocomplete="off">
+<!-- ==================================================
+     TELA 1
+================================================== -->
+
+<section id="home">
+
+    <div class="private">
+        CONSULTA PRIVADA
+    </div>
+
+    <h1>
+        Descubra informações
+        <span>disponíveis</span>
+        <span>publicamente.</span>
+    </h1>
+
+    <p class="description">
+        Preencha os dados abaixo para iniciar uma consulta.
+        O resultado deve ser interpretado como uma pesquisa
+        informativa, sem garantia de identificação.
+    </p>
+
+
+    <div class="form-card">
+
+        <div class="question">
+            Quem você está pesquisando?
+        </div>
+
+        <div class="gender">
+
+            <button
+                id="woman"
+                class="active"
+                onclick="chooseGender('woman')">
+                ♀ Mulher
+            </button>
+
+            <button
+                id="man"
+                onclick="chooseGender('man')">
+                ♂ Homem
+            </button>
+
+        </div>
+
+
+        <div class="field">
+
+            <label class="label">
+                Primeiro nome
+            </label>
+
+            <input
+                id="name"
+                type="text"
+                placeholder="Ex.: Mariana">
+
+        </div>
+
+
+        <div class="small-fields">
+
+            <div class="field">
+
+                <label class="label">
+                    Idade
+                </label>
+
+                <input
+                    id="age"
+                    type="number"
+                    placeholder="Ex.: 28">
+
+            </div>
+
+
+            <div class="field">
+
+                <label class="label">
+                    Cidade/UF
+                </label>
+
+                <input
+                    id="city"
+                    type="text"
+                    placeholder="Ex.: São Paulo/SP">
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="search-button"
+            onclick="startConsultation()">
+
+            Iniciar busca
+
+            <span style="float:right;font-size:30px;">
+                →
+            </span>
+
+        </button>
+
+
+        <div class="privacy">
+            🔒 Seus dados são usados somente para esta consulta.
+        </div>
 
     </div>
 
-    <div class="row">
 
-      <div class="field">
+    <div class="features">
 
-        <label>Idade</label>
-
-        <input
-          id="age"
-          type="number"
-          placeholder="Ex.: 28">
-
-      </div>
-
-      <div class="field">
-
-        <label>Cidade/UF</label>
-
-        <input
-          id="city"
-          type="text"
-          placeholder="Ex.: São Paulo/SP">
-
-      </div>
+        <span>Processo privado</span>
+        <span>Interface segura</span>
+        <span>Resultado organizado</span>
 
     </div>
 
-    <button
-      class="search-btn"
-      id="startButton"
-      type="button">
-      Iniciar busca →
-    </button>
 
-    <div class="security">
-      🔒 Seus dados são usados somente para esta consulta.
+    <div class="copyright">
+        © 2026 Secreto.You · Consulta informativa
     </div>
-
-  </div>
-
-  <div class="footer">
-    <span>• Processo privado</span>
-    <span>• Interface segura</span>
-    <span>• Resultado organizado</span>
-
-    <br><br>
-
-    © 2026 Secreto.You · Consulta informativa
-  </div>
 
 </section>
 
 
-<!-- ================= TELA DE PROCESSAMENTO ================= -->
+<!-- ==================================================
+     TELA 2
+================================================== -->
 
 <section id="processing">
 
-  <div class="logo">
-
-    <div class="logo-icon">♥</div>
-
-    <div class="logo-name">
-      SECRETO<span>.YOU</span>
+    <div class="process-label">
+        CONSULTA EM ANDAMENTO
     </div>
 
-    <div class="logo-sub">
-      ENCONTRE O QUE ELA ESCONDE
-    </div>
 
-  </div>
-
-  <div class="process-title">
-    CONSULTA EM ANDAMENTO
-  </div>
-
-  <h2 class="process-heading">
-    Procurando perfis<br>
-    <span>e informações...</span>
-  </h2>
-
-  <p class="process-text">
-    Estamos processando os dados informados e
-    organizando informações que possam estar
-    disponíveis publicamente.
-  </p>
+    <h2 class="process-title">
+        Procurando perfis
+        <span>e informações...</span>
+    </h2>
 
 
-  <!-- SCANNER -->
-
-  <div class="profile-scanner">
-
-    <div class="scan-ring ring-one"></div>
-    <div class="scan-ring ring-two"></div>
-    <div class="scan-ring ring-three"></div>
+    <p class="process-description">
+        Estamos processando os dados informados e organizando
+        informações que possam estar disponíveis publicamente.
+    </p>
 
 
-    <!-- PERFIS BORRADOS -->
+    <div class="scanner">
 
-    <div class="profile-track">
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+        <div class="circle three"></div>
 
-      <div class="mini-profile p1">
-        <div class="fake-person woman"></div>
-      </div>
+        <div class="photo-glow"></div>
 
-      <div class="mini-profile p2">
-        <div class="fake-person man"></div>
-      </div>
+        <div class="scanner-orbit"></div>
+        <div class="scanner-orbit-small"></div>
 
-      <div class="mini-profile p3">
-        <div class="fake-person woman2"></div>
-      </div>
+        <!-- VISUAIS FICTÍCIOS BORRADOS -->
 
-      <div class="mini-profile p4">
-        <div class="fake-person man2"></div>
-      </div>
+        <div class="ai-photo photo1"></div>
+        <div class="ai-photo photo2"></div>
+        <div class="ai-photo photo3"></div>
 
-      <div class="mini-profile p5">
-        <div class="fake-person woman3"></div>
-      </div>
+
+        <div class="center-card">
+
+            <div class="blur-person"></div>
+
+            <div class="question-mark">
+                ?
+            </div>
+
+        </div>
 
     </div>
 
 
-    <!-- FOTO CENTRAL BORRADA -->
+    <div class="status-card">
 
-    <div class="main-profile">
+        <div class="status-row">
 
-      <div class="profile-photo">
+            <div class="check">✓</div>
 
-        <div class="fake-person main-woman"></div>
+            <div class="status-text">
+                <strong>Iniciando consulta</strong>
+                <small>Preparando os dados...</small>
+            </div>
 
-      </div>
+        </div>
 
-      <div class="profile-glow"></div>
+
+        <div class="status-row">
+
+            <div class="check">✓</div>
+
+            <div class="status-text">
+                <strong>Verificando informações</strong>
+                <small>Analisando os dados informados...</small>
+            </div>
+
+        </div>
+
+
+        <div class="status-row">
+
+            <div class="check">✓</div>
+
+            <div class="status-text">
+                <strong>Procurando correspondências</strong>
+                <small>Organizando resultados...</small>
+            </div>
+
+        </div>
+
+
+        <div class="status-row">
+
+            <div class="loading-circle"></div>
+
+            <div class="status-text">
+                <strong>Preparando relatório</strong>
+                <small>Finalizando consulta...</small>
+            </div>
+
+            <div class="dots">
+                •••
+            </div>
+
+        </div>
 
     </div>
 
-
-    <!-- PONTO DE SCANNER -->
-
-    <div class="scanner-dot"></div>
-
-  </div>
+</section>
 
 
-  <!-- STATUS -->
+<!-- ==================================================
+     TELA 3
+================================================== -->
 
-  <div class="status">
+<section id="unlock">
 
-    <div class="status-item">
-
-      <div class="check">✓</div>
-
-      <div>
-        <div class="status-title">
-          Iniciando consulta
-        </div>
-
-        <div class="status-sub">
-          Preparando os dados...
-        </div>
-      </div>
-
+    <div class="unlock-label">
+        CONSULTA FINALIZADA
     </div>
 
 
-    <div class="status-item">
+    <h2 class="unlock-title">
+        Seu relatório está
+        <span>pronto.</span>
+    </h2>
 
-      <div class="check">✓</div>
 
-      <div>
-        <div class="status-title">
-          Verificando informações
+    <p class="unlock-description">
+        Libere o acesso ao relatório completo mediante
+        pagamento único.
+    </p>
+
+
+    <div class="unlock-card">
+
+        <div class="lock-icon">
+            🔒
         </div>
 
-        <div class="status-sub">
-          Analisando os dados informados...
+
+        <h3>
+            Liberar resultado
+        </h3>
+
+
+        <p>
+            Acesso ao relatório completo da consulta.
+        </p>
+
+
+        <div class="price">
+
+            <small>
+                Pagamento único
+            </small>
+
+            <strong>
+                R$ <span>24,90</span>
+            </strong>
+
         </div>
-      </div>
+
+
+        <!--
+        COLOQUE O LINK REAL DO CHECKOUT AQUI.
+        Exemplo:
+        href="SEU_LINK_DE_CHECKOUT"
+        -->
+
+        <a
+            id="paymentLink"
+            href="#"
+            class="payment-button"
+            onclick="openPayment(event)">
+
+            🔓 Liberar resultado · R$ 24,90
+
+        </a>
+
+
+        <div class="payment-note">
+            O resultado deve ser liberado somente após
+            confirmação real do pagamento.
+        </div>
+
+
+        <div class="secure-line">
+            🔒 Pagamento seguro · Acesso condicionado à confirmação
+        </div>
 
     </div>
 
+</section>
 
-    <div class="status-item">
 
-      <div class="check">✓</div>
+<!-- ==================================================
+     TELA 4
+================================================== -->
 
-      <div>
-        <div class="status-title">
-          Procurando correspondências
-        </div>
+<section id="report">
 
-        <div class="status-sub">
-          Buscando perfis e registros disponíveis...
-        </div>
-      </div>
-
+    <div class="report-label">
+        ACESSO LIBERADO
     </div>
 
 
-    <div class="status-item">
+    <h2 class="report-title">
+        RELATÓRIO DE
+        <span style="color:#ff0871;">
+            VERIFICAÇÃO
+        </span>
+    </h2>
 
-      <div class="loader"></div>
 
-      <div>
-        <div class="status-title">
-          Organizando resultados
+    <p class="description">
+        Resumo visual da consulta realizada.
+    </p>
+
+
+    <div class="report-card">
+
+
+        <!-- APLICATIVOS -->
+
+        <div class="report-section">
+
+            <div class="report-heading">
+                Presença em aplicativos
+            </div>
+
+
+            <div class="app-row">
+
+                <div class="app-name">
+                    Tinder
+                </div>
+
+                <div class="app-result not-found">
+                    Não identificado na consulta*
+                </div>
+
+            </div>
+
+
+            <div class="app-row">
+
+                <div class="app-name">
+                    Bumble
+                </div>
+
+                <div class="app-result not-found">
+                    Não identificado na consulta*
+                </div>
+
+            </div>
+
+
+            <div class="app-row">
+
+                <div class="app-name">
+                    Badoo
+                </div>
+
+                <div class="app-result not-found">
+                    Não identificado na consulta*
+                </div>
+
+            </div>
+
+
+            <div class="app-row">
+
+                <div class="app-name">
+                    Outros aplicativos
+                </div>
+
+                <div class="app-result not-found">
+                    Não identificado na consulta*
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="status-sub">
-          Preparando o relatório da consulta...
-        </div>
-      </div>
 
-      <div class="dots">•••</div>
+        <!-- GRÁFICOS -->
+
+        <div class="report-section">
+
+            <div class="report-heading">
+                Indicadores da consulta
+            </div>
+
+
+            <div class="graph">
+
+                <div class="graph-top">
+
+                    <span>
+                        Confiança percebida
+                    </span>
+
+                    <span class="graph-value">
+                        90%
+                    </span>
+
+                </div>
+
+                <div class="bar">
+
+                    <div
+                        class="bar-fill"
+                        style="width:90%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="graph">
+
+                <div class="graph-top">
+
+                    <span>
+                        Segurança da consulta
+                    </span>
+
+                    <span class="graph-value">
+                        96%
+                    </span>
+
+                </div>
+
+                <div class="bar">
+
+                    <div
+                        class="bar-fill"
+                        style="width:96%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="graph">
+
+                <div class="graph-top">
+
+                    <span>
+                        Indicadores de alerta
+                    </span>
+
+                    <span class="graph-value">
+                        5%
+                    </span>
+
+                </div>
+
+                <div class="bar">
+
+                    <div
+                        class="bar-fill"
+                        style="width:5%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="graph">
+
+                <div class="graph-top">
+
+                    <span>
+                        Indicadores positivos
+                    </span>
+
+                    <span class="graph-value">
+                        95%
+                    </span>
+
+                </div>
+
+                <div class="bar">
+
+                    <div
+                        class="bar-fill"
+                        style="width:95%">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONCLUSÃO -->
+
+        <div class="report-section">
+
+            <div class="report-heading">
+                Conclusão
+            </div>
+
+
+            <div class="conclusion">
+
+                Com base exclusivamente nos dados fornecidos
+                e na consulta realizada, não foram identificadas
+                correspondências nos itens pesquisados.
+
+            </div>
+
+
+            <div class="disclaimer">
+
+                * “Não identificado” não significa que seja possível
+                garantir que uma pessoa nunca tenha ou não possua
+                uma conta privada, inativa, com outro nome ou em
+                uma plataforma não pesquisada.
+
+                <br><br>
+
+                Os indicadores apresentados são informativos e não
+                constituem prova de fidelidade, infidelidade ou
+                comportamento pessoal.
+
+            </div>
+
+        </div>
+
+
+        <div class="report-footer">
+
+            Relatório informativo · SECRETO.YOU
+
+        </div>
 
     </div>
-
-  </div>
-
-
-  <div class="private">
-    🛡️ Todo o processo é privado e protegido.
-  </div>
 
 </section>
 
@@ -1083,103 +1463,234 @@ input:focus{
 
 <script>
 
-const home =
-  document.getElementById("home");
+/* ==================================================
+   VARIÁVEIS
+================================================== */
 
-const processing =
-  document.getElementById("processing");
-
-const startButton =
-  document.getElementById("startButton");
-
-const womanButton =
-  document.getElementById("woman");
-
-const manButton =
-  document.getElementById("man");
+let gender = "woman";
 
 
-let selectedGender = "woman";
+/* ==================================================
+   ESCOLHER GÊNERO
+================================================== */
+
+function chooseGender(value){
+
+    gender = value;
+
+    document
+        .getElementById("woman")
+        .classList
+        .remove("active");
+
+    document
+        .getElementById("man")
+        .classList
+        .remove("active");
 
 
-/* ESCOLHER MULHER */
+    if(value === "woman"){
 
-womanButton.addEventListener("click",function(){
+        document
+            .getElementById("woman")
+            .classList
+            .add("active");
 
-  selectedGender = "woman";
+    }else{
 
-  womanButton.classList.add("active");
-  manButton.classList.remove("active");
+        document
+            .getElementById("man")
+            .classList
+            .add("active");
 
-});
-
-
-/* ESCOLHER HOMEM */
-
-manButton.addEventListener("click",function(){
-
-  selectedGender = "man";
-
-  manButton.classList.add("active");
-  womanButton.classList.remove("active");
-
-});
+    }
+}
 
 
-/* INICIAR */
+/* ==================================================
+   TELA 1 -> TELA 2
+================================================== */
 
-startButton.addEventListener("click",function(){
+function startConsultation(){
 
-  const name =
-    document.getElementById("name").value.trim();
+    const name =
+        document
+        .getElementById("name")
+        .value
+        .trim();
 
-  const age =
-    document.getElementById("age").value.trim();
+    const age =
+        document
+        .getElementById("age")
+        .value
+        .trim();
 
-  const city =
-    document.getElementById("city").value.trim();
-
-
-  if(!name){
-
-    alert("Digite o primeiro nome.");
-
-    return;
-
-  }
-
-
-  if(!age){
-
-    alert("Digite a idade.");
-
-    return;
-
-  }
+    const city =
+        document
+        .getElementById("city")
+        .value
+        .trim();
 
 
-  if(!city){
+    if(!name){
 
-    alert("Digite a cidade/UF.");
+        alert("Digite o primeiro nome.");
 
-    return;
+        document
+            .getElementById("name")
+            .focus();
 
-  }
+        return;
+    }
 
 
-  home.style.display = "none";
+    if(!age){
 
-  processing.style.display = "block";
+        alert("Digite a idade.");
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+        document
+            .getElementById("age")
+            .focus();
 
-});
+        return;
+    }
 
+
+    if(!city){
+
+        alert("Digite a cidade/UF.");
+
+        document
+            .getElementById("city")
+            .focus();
+
+        return;
+    }
+
+
+    document
+        .getElementById("home")
+        .style
+        .display = "none";
+
+
+    document
+        .getElementById("processing")
+        .style
+        .display = "block";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+
+    /*
+       APENAS DEMONSTRAÇÃO DA ANIMAÇÃO.
+
+       Depois você pode substituir esse timer
+       pelo retorno real do seu servidor.
+    */
+
+    setTimeout(function(){
+
+        document
+            .getElementById("processing")
+            .style
+            .display = "none";
+
+
+        document
+            .getElementById("unlock")
+            .style
+            .display = "block";
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    },8000);
+
+}
+
+
+/* ==================================================
+   PAGAMENTO
+================================================== */
+
+function openPayment(event){
+
+    const link =
+        document
+        .getElementById("paymentLink")
+        .getAttribute("href");
+
+
+    if(link === "#"){
+
+        event.preventDefault();
+
+        alert(
+            "O checkout ainda não foi configurado. " +
+            "Coloque aqui o link real do pagamento."
+        );
+
+        return;
+    }
+
+}
+
+
+/* ==================================================
+   FUNÇÃO PARA LIBERAR RELATÓRIO
+==================================================
+
+   Esta função será chamada pelo seu servidor
+   SOMENTE depois que o pagamento for confirmado.
+
+   Exemplo:
+
+   showReport();
+
+*/
+
+function showReport(){
+
+    document
+        .getElementById("home")
+        .style
+        .display = "none";
+
+
+    document
+        .getElementById("processing")
+        .style
+        .display = "none";
+
+
+    document
+        .getElementById("unlock")
+        .style
+        .display = "none";
+
+
+    document
+        .getElementById("report")
+        .style
+        .display = "block";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
 
 </script>
 
 </body>
-  </html>
+      </html>
